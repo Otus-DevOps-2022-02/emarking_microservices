@@ -1,0 +1,32 @@
+#cloud-config
+disable_root: true
+timezone: Europe/Moscow
+repo_update: true
+repo_upgrade: true
+apt:
+  preserve_sources_list: true
+
+users:
+    - default
+    - name: admin
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      shell: /bin/bash
+      ssh-authorized-keys:
+       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCYkwj+2bTUEqYk/QMfsyPa2eDaljmzBeM33tWXKAlGexTUurzTg2Kp4xUj+cIZI4gK7bDdWQLXGThT8fWS9e3oxvJrZ254YodA4WaGjZXPwXKKz+8shd+gJBVDgrG5ucLHlEWDeGzxx49MWBvN7/fixyxjQ6PBhKhzKR4XTnkgdxSxar2+0tDSyZq81rR7Msl5OaHwhyDXVp+alAXyaZoyoz2BYn9H1xyH1HY77IKeL411Ltd2mCO1aN+PChwZraJupimMaUUdIy6aL0j0mBhCuY7hEtJusCupcppe4/HfvtwVaONfPeBv0jp5gFIKp4Ojv0HYlqomtqLnHlWR4RUt6ExNDswOMCzopt+HHqlL8YZ/+p5kihH7jBiqhmG5ePy0HUF1ZBhCrYYu/+m4STdIPB+laUtYMCKA5bX8gGPo+spoRY/Gq0sEdB7WwZp3vYuTyxf/Di0FMEgGwVgZ+hVLQKo8FTYgzM8NpOeazpgKXVc6iBYQQZevcXjzbpaODbVguAzbDzshXHLQ2I/1Eu1YcGFKoLkKTtIgAC6aD3Hushrm4NA6mr67iJozavTQKNM3NYv2JWJgSrOjVv9H8AYVyP3S0riR6+bMV6i2st/ksNkekEF0/Exrsu3FykZkVkm3QMlpPv8dncgZ58ejPhflTGCp2akKN76Q2J8IF8bXbQ== admin"
+#packages:
+#    - git
+#    - apt-transport-https
+#    - ca-certificates
+
+#runcmd:
+#    - [ mkdir, /home/admin/inst ]
+#    - [ cd, /home/admin/inst ]
+#    - [ wget, raw.githubusercontent.com/Otus-DevOps-2022-02/emarking_infra/cloud-testapp/install_mongodb.sh ]
+#    - [ wget, raw.githubusercontent.com/Otus-DevOps-2022-02/emarking_infra/cloud-testapp/install_ruby.sh ]
+#    - [ wget, raw.githubusercontent.com/Otus-DevOps-2022-02/emarking_infra/cloud-testapp/deploy.sh ]
+#    - [ chmod, +x, install_mongodb.sh ]
+#    - [ chmod, +x, install_ruby.sh ]
+#    - [ chmod, +x, deploy.sh ]
+#    - [ bash, install_ruby.sh ]
+#    - [ bash, install_mongodb.sh ]
+#    - [ bash, deploy.sh ]
