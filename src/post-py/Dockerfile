@@ -1,7 +1,7 @@
 FROM python:3.6.0-alpine
 WORKDIR /app
 ADD . /app
-
+EXPOSE 5000
 
 
 RUN apk --no-cache --update add build-base && \
