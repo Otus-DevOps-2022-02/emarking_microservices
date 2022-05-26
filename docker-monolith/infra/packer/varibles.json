@@ -1,0 +1,9 @@
+{
+	"folder_id": "b1gjs8uoo12oe6e1hh5v",
+	"key_path": "key1.json",
+	"image_name":"ubuntu-1804-lts",
+	"ssh_key": "~/.ssh/appuser",
+	"ssh_pub": "~/.ssh/appuser.pub"
+
+
+}

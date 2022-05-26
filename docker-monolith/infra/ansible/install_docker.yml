@@ -1,0 +1,45 @@
+---
+- name: Install Docker
+  become: true
+  hosts: all
+  tasks:
+
+    - name: INSTALLING SOFTWARE
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+            - ca-certificates 
+            - curl 
+            - gnupg 
+            - lsb-release
+            - python3-pip
+      tags: install
+
+    - name: ADD GPG KEY
+      apt_key:
+          state: present
+          url: https://download.docker.com/linux/ubuntu/gpg
+      tags: install
+
+
+    - name: ADD REPO LIST
+      apt_repository: 
+        repo: deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+        state: present
+      tags: install
+
+    - name: INSTAL DOCKER PY
+      pip:
+        name: docker-py
+    
+    - name: INSTALL DOCKER
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+        - docker-ce 
+        - docker-ce-cli 
+        - containerd.io
+        - docker-compose-plugin
+      tags: install
+  
+
+    
+    

@@ -1,0 +1,17 @@
+packer/varibles.json
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+*.tf.back
+*.tf.save
+.terraform/
+*.retry
+key.json
+jdauphant.nginx
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
