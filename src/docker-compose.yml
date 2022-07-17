@@ -42,7 +42,6 @@ networks:
       driver: default
       config:
       - subnet: 10.0.1.0/24
-        gateway: 10.0.1.1
   back_net:
     driver: bridge
     driver_opts:
@@ -51,4 +50,3 @@ networks:
       driver: default
       config:
       - subnet: 10.0.2.0/24
-        gateway: 10.0.2.1

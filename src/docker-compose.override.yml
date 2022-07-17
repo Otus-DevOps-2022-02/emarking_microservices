@@ -1,6 +1,5 @@
 version: '3.3'
 services:
-
   post_db:
     volumes:
       - post_db:/data/db
@@ -10,16 +9,13 @@ services:
     command: [ "puma", "--debug", "-w", "2" ]
     ports:
       - 9292:9292/tcp
-
   post:
     volumes:
       - post_app:/app
-
   comment:
     volumes:
       - comment_app:/app
     command: [ "puma", "--debug", "-w", "2" ]
-
 volumes:
   post_db:
     name: post_db
