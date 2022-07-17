@@ -1,0 +1,9 @@
+{
+	"folder_id": "b1gjs8uoo12oe6e1hh5v",
+	"key_path": "/home/eugene/lerning/stage/packer_main/key.json",
+	"image_name":"ubuntu-1804-lts",
+	"ssh_key": "/home/eugene/.ssh/admin",
+	"ssh_pub": "/home/eugene/.ssh/admin.pub"
+
+
+}
