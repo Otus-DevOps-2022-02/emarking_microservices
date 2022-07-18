@@ -20,12 +20,11 @@ build_job:
 
 test_unit_job:
   stage: test
+  services:
+    - mongo:latest
   script:
     - echo 'Testing 1'
-  services:
- - mongo:latest
- script:
- - ruby simpletest.rb
+    - ruby simpletest.rb
 
 test_integration_job:
   stage: test
