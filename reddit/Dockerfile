@@ -17,4 +17,4 @@ COPY mongod.conf /etc/mongod.conf
 # Install dep and run script
 RUN cd /reddit && rm Gemfile.lock && bundle install && chmod 0777 start.sh
 
-CMD ["/start.sh"]
+CMD ["/reddit/start.sh"]
