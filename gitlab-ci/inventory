@@ -1,0 +1,2 @@
+[docker-prod]
+dockerhost-0  ansible_host=51.250.69.215
