@@ -15,6 +15,6 @@ RUN apt-get update && \
 COPY mongod.conf /etc/mongod.conf
 
 # Install dep and run script
-RUN cd /reddit && bundle install && chmod 0777 /start.sh
+RUN cd /reddit && rm Gemfile.lock && bundle install && chmod 0777 start.sh
 
 CMD ["/start.sh"]
