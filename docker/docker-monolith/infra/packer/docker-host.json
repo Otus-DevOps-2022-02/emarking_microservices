@@ -18,9 +18,9 @@
 	     "disk_type": "network-ssd"
         }
     ],
-    
-        
-   
+
+
+
 
     "provisioners": [
         {
@@ -29,9 +29,9 @@
             "playbook_file" : "./ansible/install_docker.yml",
             "ansible_env_vars": [ "ANSIBLE_ROLES_PATH=/ansible/roles", "ANSIBLE_HOST_KEY_CHECKING = false"  ],
             "use_proxy": false
-            
-          
+
+
         }
-        
+
     ]
 }

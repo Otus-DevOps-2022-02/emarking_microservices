@@ -9,5 +9,5 @@
       docker_container:
         name: reddit-app
         image: emarking/otus-reddit:1.0
-        ports: 
+        ports:
           - "80:9292"
