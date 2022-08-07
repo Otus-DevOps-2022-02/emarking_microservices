@@ -1,0 +1,95 @@
+version: '3.3'
+services:
+  post_db:
+    container_name: post_db
+    image: mongo:${DBVER}
+    volumes:
+      - post_db:/data/db
+    networks:
+      - back_net
+  ui:
+    container_name: ui
+    image: ${USER_NAME}/ui:${VER}
+    ports:
+      - ${UIPORT}
+    networks:
+      - front_net
+  post:
+    container_name: post
+    image: ${USER_NAME}/post:${VER}
+    networks:
+      - front_net
+      - back_net
+  comment:
+    container_name: comment
+    image: ${USER_NAME}/comment:${VER}
+    networks:
+      - front_net
+      - back_net
+  prometheus:
+    image: ${USER_NAME}/prometheus
+    container_name: prometheus
+    ports:
+      - '9090:9090'
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1d' # Задаем время хранения метрик в 1 день
+    networks:
+      - front_net
+      - back_net
+    volumes:
+      - prometheus_data:/prometheus
+  node-exporter:
+    image: prom/node-exporter:v0.15.2
+    container_name: node-exporter
+    user: root
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
+    networks:
+      - front_net
+      - back_net
+  mongo-exporter:
+    image: percona/mongodb_exporter:0.33.0
+    container_name: mongo-exporter
+    ports:
+      - '9216:9216'
+      - '17001:17001'
+    command:
+      - '--mongodb.uri=mongodb://mongodb_exporter:password@post_db:27017'
+    networks:
+      - back_net
+
+
+
+
+volumes:
+  post_db:
+
+
+  prometheus_data:
+
+
+networks:
+  front_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.1.0/24
+  back_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.2.0/24
